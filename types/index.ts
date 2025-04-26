@@ -1,0 +1,60 @@
+// types/index.ts
+export interface Article {
+    id: string;
+    title: string;
+    slug: string;
+    content: string;
+    summary: string;
+    imageUrl: string;
+    imageCredit?: string;
+    publishedAt: Date | null;
+    createdAt: Date;
+    updatedAt: Date;
+    authorId: string;
+    authorName: string;
+    categoryIds: string[];
+    tags: string[];
+    status: ArticleStatus;
+    featured: boolean;
+    viewCount: number;
+    commentCount: number;
+    likeCount: number;
+    shareCount: number;
+    sources?: Source[];
+  }
+  
+  export interface Source {
+    name: string;
+    url: string;
+  }
+  
+  export enum ArticleStatus {
+    DRAFT = 'draft',
+    PUBLISHED = 'published',
+    ARCHIVED = 'archived',
+  }
+  
+  export interface ArticleFormData extends Omit<Article, 'id' | 'createdAt' | 'updatedAt' | 'slug' | 'viewCount' | 'commentCount' | 'likeCount' | 'shareCount'> {
+    id?: string;
+    categoryIds: string[];
+    tags: string[];
+  }
+  
+  export interface Category {
+    id: string;
+    name: string;
+    slug: string;
+    description?: string;
+    imageUrl?: string;
+    color?: string;
+    parentId?: string | null;
+    createdAt: Date;
+    updatedAt: Date;
+    articleCount: number;
+    order: number;
+    active: boolean;
+  }
+  
+  export interface CategoryFormData extends Omit<Category, 'id' | 'slug' | 'createdAt' | 'updatedAt' | 'articleCount'> {
+    id?: string;
+  }
