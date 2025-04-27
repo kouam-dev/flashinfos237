@@ -4,12 +4,17 @@ import { getCategoryBySlug, getArticlesByCategory } from '@/lib/api';
 import CategoryPageClient from '@/components/category/CategoryPageClient';
 import { Article } from '@/types/article';
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: { slug: string } 
-}, parent: ResolvingMetadata): Promise<Metadata> {
-  const category = await getCategoryBySlug(params.slug);
+type Props = {
+  params: { slug: string }
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // Attendre l'objet params complet
+  const resolvedParams = await Promise.resolve(params);
+  const category = await getCategoryBySlug(resolvedParams.slug);
   
   if (!category) {
     return {
@@ -31,15 +36,17 @@ export async function generateMetadata({
     openGraph: {
       title: metaTitle,
       description: metaDescription,
-      url: `/category/${params.slug}`,
+      url: `/category/${resolvedParams.slug}`,
       type: 'website',
       ...(category.imageUrl && { images: [{ url: category.imageUrl }] })
     }
   };
 }
 
-export default async function CategoryPage({ params }: { params: { slug: string } }) {
-  const category = await getCategoryBySlug(params.slug);
+export default async function CategoryPage({ params }: Props) {
+  // Attendre l'objet params complet
+  const resolvedParams = await Promise.resolve(params);
+  const category = await getCategoryBySlug(resolvedParams.slug);
   let initialArticles: Article[] = [];
   
   if (category) {
