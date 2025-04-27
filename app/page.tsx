@@ -8,6 +8,8 @@ import { Dialog, Popover, Transition } from '@headlessui/react';
 import { collection, getDocs, query, where, orderBy, limit } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { Article, ArticleStatus, Category } from '../types';
+import SkeletonLoader from '@/components/SkeletonLoader';
+import NewsletterSection from '@/components/NewsletterSection';
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -96,9 +98,7 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-red-600"></div>
-      </div>
+    <SkeletonLoader/>
     );
   }
 
@@ -110,7 +110,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="max-w-7xl mx-auto px-4 py-6">
+      <main className="max-w-7xl mx-auto mt-14 md:mt-28 px-4 py-6">
         {/* Welcome message */}
         <div className="bg-red-600 text-white p-3 mb-6 rounded">
           <div className="font-bold text-lg">Bienvenue sur Flashinfos237</div>
@@ -228,7 +228,7 @@ export default function Home() {
             </section>
 
             {/* Category sections */}
-            {categories.slice(0, 3).map((category) => (
+            {categories.slice(0, 6).map((category) => (
               <section key={category.id} className="mb-12">
                 <div className="flex items-center justify-between mb-6 pb-2 border-b-2 border-red-600">
                   <h2 className="text-2xl font-bold">{category.name}</h2>
@@ -327,26 +327,7 @@ export default function Home() {
             </div>
 
             {/* Newsletter signup */}
-            <div className="bg-black text-white p-6 rounded-md">
-              <h3 className="text-xl font-bold mb-2">Abonnez-vous</h3>
-              <p className="mb-4">
-                Recevez les dernières actualités directement dans votre boîte mail
-              </p>
-              <form className="space-y-3">
-                <input
-                  type="email"
-                  placeholder="Votre adresse e-mail"
-                  className="w-full px-4 py-2 rounded-md text-black"
-                  required
-                />
-                <button 
-                  type="submit"
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md transition-colors"
-                >
-                  S'abonner
-                </button>
-              </form>
-            </div>
+            <NewsletterSection/>
           </div>
         </div>
       </main>
