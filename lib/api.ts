@@ -1,7 +1,8 @@
 // lib/api.ts
-import { collection, getDocs, query, where, orderBy, limit, DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
+import { collection, getDocs, query, where, orderBy, limit, doc, getDoc, DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { Category, Article, ArticleStatus } from '@/types';
+import { Comment, CommentStatus } from '@/types/comment';
 
 /**
  * Convertit les timestamps Firestore en objets Date JavaScript
@@ -84,5 +85,127 @@ export async function getArticlesByCategory(
   } catch (error) {
     console.error("Error fetching articles:", error);
     return [];
+  }
+}
+
+/**
+ * Récupère un article par son slug
+ */
+export async function getArticleBySlug(slug: string): Promise<Article | null> {
+  try {
+    const articleQuery = query(
+      collection(db, 'articles'),
+      where('slug', '==', slug),
+      where('status', '==', ArticleStatus.PUBLISHED)
+    );
+    
+    const articleSnapshot = await getDocs(articleQuery);
+    
+    if (articleSnapshot.empty) {
+      return null;
+    }
+    
+    const articleDoc = articleSnapshot.docs[0];
+    const articleData = articleDoc.data();
+    
+    const article = {
+      id: articleDoc.id,
+      ...convertFirestoreTimestamps(articleData)
+    };
+    
+    return article as Article;
+  } catch (error) {
+    console.error("Error fetching article:", error);
+    return null;
+  }
+}
+
+/**
+ * Récupère les commentaires d'un article
+ */
+export async function getCommentsByArticleId(articleId: string): Promise<Comment[]> {
+  try {
+    const commentsQuery = query(
+      collection(db, 'comments'),
+      where('articleId', '==', articleId),
+      where('status', '==', CommentStatus.APPROVED),
+      where('parentId', '==', null), // Only get top-level comments
+      orderBy('createdAt', 'desc')
+    );
+    
+    const commentsSnapshot = await getDocs(commentsQuery);
+    
+    return commentsSnapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        ...convertFirestoreTimestamps(data)
+      } as Comment;
+    });
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+    return [];
+  }
+}
+
+/**
+ * Récupère les articles similaires (même catégorie)
+ */
+export async function getRelatedArticles(
+  currentArticleId: string, 
+  categoryId: string, 
+  ArticleLimit = 5
+): Promise<Article[]> {
+  try {
+    const relatedQuery = query(
+      collection(db, 'articles'),
+      where('categoryIds', 'array-contains', categoryId),
+      where('status', '==', ArticleStatus.PUBLISHED),
+      limit(ArticleLimit) // Fetch one extra to handle possible self-inclusion
+    );
+    
+    const relatedSnapshot = await getDocs(relatedQuery);
+    
+    // Filter out the current article and limit to requested number
+    const relatedArticles = relatedSnapshot.docs
+      .map(doc => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          ...convertFirestoreTimestamps(data)
+        } as Article;
+      })
+      .filter(article => article.id !== currentArticleId)
+      .slice(0, ArticleLimit);
+    
+    return relatedArticles;
+  } catch (error) {
+    console.error("Error fetching related articles:", error);
+    return [];
+  }
+}
+
+/**
+ * Récupère toutes les catégories
+ */
+export async function getAllCategories(): Promise<{[key: string]: Category}> {
+  try {
+    const categoriesSnapshot = await getDocs(collection(db, 'categories'));
+    
+    const categoriesData: {[key: string]: Category} = {};
+    categoriesSnapshot.docs.forEach(doc => {
+      const data = doc.data();
+      const categoryData = {
+        id: doc.id,
+        ...convertFirestoreTimestamps(data)
+      } as Category;
+      
+      categoriesData[categoryData.id] = categoryData;
+    });
+    
+    return categoriesData;
+  } catch (error) {
+    console.error("Error fetching all categories:", error);
+    return {};
   }
 }
