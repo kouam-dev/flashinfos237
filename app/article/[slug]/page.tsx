@@ -2,7 +2,7 @@
 import { Metadata, ResolvingMetadata } from 'next';
 import { getArticleBySlug, getCommentsByArticleId, getRelatedArticles, getAllCategories } from '@/lib/api';
 import ArticleDetailClient from '@/components/article/ArticleDetailClient';
-// import { updateViewCount } from '@/lib/firebase-server';
+import { updateViewCount } from '@/lib/firebase-server';
 import { notFound } from 'next/navigation';
 import { Article } from '@/types/article';
 
@@ -65,8 +65,7 @@ export default async function ArticleDetailPage({ params }: Props) {
   }
   
   // Incrémenter le compteur de vues côté serveur
-  // Vous devrez créer cette fonction dans lib/firebase-server.ts
-  // await updateViewCount(article.id);
+  await updateViewCount(article.id);
   
   // Récupérer les commentaires et les articles associés
   const comments = await getCommentsByArticleId(article.id);
