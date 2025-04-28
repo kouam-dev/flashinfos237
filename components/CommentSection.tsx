@@ -86,20 +86,20 @@ export default function CommentSection({ articleId, comments, setComments }: Com
               
               {/* Like button */}
               <div className="mt-3 flex items-center">
-                <button className="flex items-center text-sm text-gray-500 hover:text-red-600">
+                {/* <button className="flex items-center text-sm text-gray-500 hover:text-red-600">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905v.714L7.5 9h-3a2 2 0 00-2 2v.5" />
                   </svg>
                   {comment.likes} J'aime
-                </button>
+                </button> */}
                 
                 {/* Reply button (functionality can be added later) */}
-                <button className="flex items-center text-sm text-gray-500 hover:text-red-600 ml-4">
+                {/* <button className="flex items-center text-sm text-gray-500 hover:text-red-600 ml-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
                   </svg>
                   Répondre
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

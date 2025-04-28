@@ -2,12 +2,14 @@
 import { Metadata } from 'next';
 import { getAllFeaturedArticles, getLatestArticles, getActiveCategories } from '@/lib/api';
 import HomePageClient from '@/components/home/HomePageClient';
-import { Category, Article, ArticleStatus } from '@/types';
 
 export const metadata: Metadata = {
   title: 'Flashinfos237 - Actualités du Cameroun et d\'Afrique',
   description: 'Toute l\'actualité du Cameroun et d\'Afrique en temps réel',
 }
+
+// Cette option indique à Next.js de mettre en cache cette page
+export const revalidate = 900; // 15 minutes en secondes
 
 export default async function HomePage() {
   // Récupération des données côté serveur
@@ -15,20 +17,10 @@ export default async function HomePage() {
   const latestArticles = await getLatestArticles(20);
   const categories = await getActiveCategories();
   
-  // Préparer les données pour le client en s'assurant que les dates sont correctement sérialisées
-  const prepareDataForClient = (data) => {
-    return JSON.parse(JSON.stringify(data, (key, value) => {
-      // Convertir les objets Date en chaînes ISO
-      if (value instanceof Date) {
-        return value.toISOString();
-      }
-      return value;
-    }));
-  };
-  
+  // S'assurer que les données sont JSON-sérialisables
   return <HomePageClient 
-    initialFeaturedArticles={prepareDataForClient(featuredArticles)} 
-    initialLatestArticles={prepareDataForClient(latestArticles)}
-    initialCategories={prepareDataForClient(categories)}
+    initialFeaturedArticles={JSON.parse(JSON.stringify(featuredArticles))} 
+    initialLatestArticles={JSON.parse(JSON.stringify(latestArticles))}
+    initialCategories={JSON.parse(JSON.stringify(categories))}
   />;
 }

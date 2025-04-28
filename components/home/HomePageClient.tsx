@@ -25,14 +25,12 @@ export default function HomePageClient({
   const [topCategories, setTopCategories] = useState<Category[]>(initialCategories?.slice(0, 5) || []);
   const [isLoading, setIsLoading] = useState(!initialFeaturedArticles || !initialLatestArticles);
   
-  // Dans HomePageClient.tsx
-// Supprimer cette condition qui provoque le double chargement
-useEffect(() => {
-  // Si on n'a pas les données initiales (fallback), les charger côté client
-  if (!initialFeaturedArticles?.length || !initialLatestArticles?.length || !initialCategories?.length) {
-    fetchAllData();
-  }
-}, [initialFeaturedArticles, initialLatestArticles, initialCategories]);
+  useEffect(() => {
+    // Si on n'a pas les données initiales (fallback), les charger côté client
+    if (!initialFeaturedArticles?.length || !initialLatestArticles?.length || !initialCategories?.length) {
+      fetchAllData();
+    }
+  }, [initialFeaturedArticles, initialLatestArticles, initialCategories]);
 
   const fetchAllData = async () => {
     try {
@@ -102,105 +100,18 @@ useEffect(() => {
     }
   };
 
-
-  useEffect(() => {
-    // Ne charger que les données manquantes, et ne pas remplacer les données existantes
-    if (initialFeaturedArticles?.length && initialLatestArticles?.length && initialCategories?.length) {
-      // Aucun besoin de charger des données
-      return;
-    }
-    
-    // Sinon, chargez uniquement les données manquantes
-    async function loadMissingData() {
-      setIsLoading(true);
-      try {
-        // Charger uniquement ce qui est nécessaire
-        if (!initialCategories?.length) {
-          // Charger les catégories...
-          const categoriesQuery = query(
-            collection(db, 'categories'),
-            where('active', '==', true),
-            orderBy('order')
-          );
-          const categoriesSnapshot = await getDocs(categoriesQuery);
-          const categoriesData = categoriesSnapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-          })) as Category[];
-          setCategories(categoriesData);
-          
-          // Top 5 categories for nav
-          setTopCategories(categoriesData.slice(0, 5));
-        }
-        
-        if (!initialFeaturedArticles?.length) {
-          // Charger les articles en vedette...
-          const featuredQuery = query(
-            collection(db, 'articles'),
-            where('status', '==', ArticleStatus.PUBLISHED),
-            where('featured', '==', true),
-            orderBy('publishedAt', 'desc'),
-            limit(5)
-          );
-          const featuredSnapshot = await getDocs(featuredQuery);
-          const featuredData = featuredSnapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data(),
-            publishedAt: doc.data().publishedAt?.toDate(),
-            createdAt: doc.data().createdAt?.toDate(),
-            updatedAt: doc.data().updatedAt?.toDate(),
-          })) as Article[];
-          setFeaturedArticles(featuredData);
-        }
-        
-        if (!initialLatestArticles?.length) {
-          // Charger les derniers articles...
-          const latestQuery = query(
-            collection(db, 'articles'),
-            where('status', '==', ArticleStatus.PUBLISHED),
-            orderBy('publishedAt', 'desc'),
-            limit(20)
-          );
-          const latestSnapshot = await getDocs(latestQuery);
-          const latestData = latestSnapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data(),
-            publishedAt: doc.data().publishedAt?.toDate(),
-            createdAt: doc.data().createdAt?.toDate(),
-            updatedAt: doc.data().updatedAt?.toDate(),
-          })) as Article[];
-          setLatestArticles(latestData);
-        }
-      } catch (error) {
-        console.error("Error loading missing data:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    
-    loadMissingData();
-  }, []);
-
- // Corrigez la fonction formatDate pour qu'elle soit déterministe
-function formatDate(date: string | Date) {
-  try {
-    // Utiliser une locale fixe et un format stable
+  function formatDate(date: string | Date) {
+    // Gère à la fois les objets Date et les chaînes de date
     const dateObj = typeof date === 'string' ? new Date(date) : date;
     
-    // Utiliser une méthode qui donnera un résultat identique côté client et serveur
-    return new Intl.DateTimeFormat('fr-FR', {
+    return dateObj.toLocaleDateString('fr-FR', {
       day: 'numeric',
       month: 'long',
       year: 'numeric',
       hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'UTC' // Important pour la cohérence
-    }).format(dateObj);
-  } catch (e) {
-    console.error("Erreur lors du formatage de la date:", e);
-    return "Date inconnue";
+      minute: '2-digit'
+    });
   }
-}
 
   const mainFeatured = featuredArticles[0];
   const secondaryFeatured = featuredArticles.slice(1, 5);

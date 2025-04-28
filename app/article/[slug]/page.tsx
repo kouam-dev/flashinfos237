@@ -53,6 +53,8 @@ export async function generateMetadata(
   };
 }
 
+export const revalidate = 300; // 5 minutes
+
 export default async function ArticleDetailPage({ params }: Props) {
   const resolvedParams = await Promise.resolve(params);
   const slug = resolvedParams.slug;

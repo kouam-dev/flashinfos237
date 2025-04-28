@@ -1,10 +1,9 @@
 // components/article/ArticleDetailClient.tsx
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import CommentSection from '@/components/CommentSection';
 import ShareButtons from '@/components/ShareButtons';
 import { Article, Category } from '@/types';
@@ -24,10 +23,10 @@ export default function ArticleDetailClient({
   initialRelatedArticles,
   initialCategories
 }: ArticleDetailClientProps) {
-  const [article, setArticle] = useState<Article>(initialArticle);
+  const [article] = useState<Article>(initialArticle);
   const [comments, setComments] = useState<Comment[]>(initialComments);
-  const [relatedArticles, setRelatedArticles] = useState<Article[]>(initialRelatedArticles);
-  const [categories, setCategories] = useState<{[key: string]: Category}>(initialCategories);
+  const [relatedArticles] = useState<Article[]>(initialRelatedArticles);
+  const [categories] = useState<{[key: string]: Category}>(initialCategories);
   
   function formatDate(date: string | Date) {
     // Gère à la fois les objets Date et les chaînes de date

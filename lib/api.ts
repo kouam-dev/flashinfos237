@@ -1,5 +1,6 @@
 // lib/api.ts
 import { collection, getDocs, query, where, orderBy, limit} from 'firebase/firestore';
+import { cache } from 'react';
 import { db } from '@/lib/firebase';
 import { Category, Article, ArticleStatus } from '@/types';
 import { Comment, CommentStatus } from '@/types/comment';
@@ -88,7 +89,8 @@ export async function getLatestArticles(articlePerPage = 20): Promise<Article[]>
 /**
  * Récupère toutes les catégories actives
  */
-export async function getActiveCategories(): Promise<Category[]> {
+// Utiliser la fonction cache de React pour mémoriser les résultats
+export const getActiveCategories = cache(async (): Promise<Category[]> => {
   try {
     const categoriesQuery = query(
       collection(db, 'categories'),
@@ -113,7 +115,7 @@ export async function getActiveCategories(): Promise<Category[]> {
     console.error("Error fetching active categories:", error);
     return [];
   }
-}
+});
 
 /**
  * Récupère une catégorie par son slug

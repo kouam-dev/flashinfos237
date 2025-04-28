@@ -43,6 +43,8 @@ export async function generateMetadata(
   };
 }
 
+export const revalidate = 900; // Revalidation toutes les 15 minutes
+
 export default async function CategoryPage({ params }: Props) {
   // Attendre l'objet params complet
   const resolvedParams = await Promise.resolve(params);
