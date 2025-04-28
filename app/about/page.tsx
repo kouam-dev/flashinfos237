@@ -13,12 +13,11 @@ export default function AboutPage() {
       {/* En-tête de la page avec fond amélioré */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-green-700 via-red-600 to-amber-500 opacity-90"></div>
-        <div className="absolute inset-0 bg-[url('/pattern-bg.png')] opacity-20"></div>
         <div className="container relative mx-auto px-4 py-16 md:py-24 text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
             À propos de <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">Flash<span className="text-amber-300">Infos</span>237</span>
           </h1>
-          <p className="text-lg md:text-2xl max-w-2xl mx-auto font-light">
+          <p className="text-lg md:text-xl max-w-2xl mx-auto font-light">
             Votre source d&apos;information fiable sur l&apos;actualité camerounaise
           </p>
           <div className="w-24 h-1 bg-amber-400 mx-auto mt-6"></div>
