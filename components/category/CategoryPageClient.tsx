@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { collection, getDocs, query, where, orderBy, limit, startAfter } from 'firebase/firestore';
+import { collection, getDocs, query, where, orderBy, limit, startAfter, QueryDocumentSnapshot  } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { Article, ArticleStatus, Category } from '@/types';
 import { GridIcon, ListIcon } from '@/components/icons/ViewIcons';
@@ -17,7 +17,7 @@ export default function CategoryPageClient({ initialCategory, initialArticles }:
   const [category, setCategory] = useState<Category | null>(initialCategory);
   const [isLoading, setIsLoading] = useState(!initialCategory);
   const [hasMore, setHasMore] = useState(true);
-  const [lastDoc, setLastDoc] = useState<any>(null);
+  const [lastDoc, setLastDoc] = useState<QueryDocumentSnapshot | any>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
   
   const pathname = usePathname();
@@ -154,9 +154,9 @@ export default function CategoryPageClient({ initialCategory, initialArticles }:
       <div className="max-w-7xl mx-auto mt-14 md:mt-28 px-4 py-12">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900">Catégorie non trouvée</h1>
-          <p className="mt-4 text-gray-600">La catégorie que vous recherchez n'existe pas.</p>
+          <p className="mt-4 text-gray-600">La catégorie que vous recherchez n&apos;existe pas.</p>
           <Link href="/" className="mt-6 inline-block bg-red-600 text-white px-6 py-3 rounded-md hover:bg-red-700">
-            Retour à l'accueil
+            Retour à l&apos;accueil
           </Link>
         </div>
       </div>
@@ -329,7 +329,7 @@ export default function CategoryPageClient({ initialCategory, initialArticles }:
         <div className="py-8 md:py-12 text-center">
           <div className="text-gray-400 text-4xl md:text-5xl mb-4">📰</div>
           <h2 className="text-xl md:text-2xl font-bold text-gray-900">Aucun article trouvé</h2>
-          <p className="mt-2 text-gray-600">Aucun article n'est disponible dans cette catégorie pour le moment.</p>
+          <p className="mt-2 text-gray-600">Aucun article n&apos;est disponible dans cette catégorie pour le moment.</p>
         </div>
       )}
     </div>

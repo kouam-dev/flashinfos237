@@ -10,14 +10,14 @@ interface CommentSectionProps {
   setComments: React.Dispatch<React.SetStateAction<Comment[]>>;
 }
 
-export default function CommentSection({ articleId, comments, setComments }: CommentSectionProps) {
+export default function CommentSection({ articleId, comments }: CommentSectionProps) {
   const [newComment, setNewComment] = useState('');
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  
+
   const handleSubmitComment = async (e: React.FormEvent) => {
     e.preventDefault();
     

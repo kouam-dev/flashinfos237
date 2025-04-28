@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 // import { FiFacebook, FiInstagram } from 'react-icons/fi';
 
 export const metadata = {

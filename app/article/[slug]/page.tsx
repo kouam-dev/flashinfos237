@@ -11,8 +11,7 @@ type Props = {
 }
 
 export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
+  { params }: Props
 ): Promise<Metadata> {
   // Attendre l'objet params complet
   const resolvedParams = await Promise.resolve(params);

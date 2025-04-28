@@ -121,7 +121,7 @@ export default function HomePageClient({
       {/* Welcome message */}
       <div className="bg-red-600 text-white p-3 mb-6 rounded">
         <div className="font-bold text-lg">Bienvenue sur Flashinfos237</div>
-        <p>Toute l'actualité du Cameroun et d'Afrique en temps réel</p>
+        <p>Toute l&apos;actualité du Cameroun et d&apos;Afrique en temps réel</p>
       </div>
 
       {/* Featured Articles Section */}

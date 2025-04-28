@@ -110,26 +110,26 @@ function ContactInfoItem({
   );
 }
 
-function SocialLink({ 
-  href, 
-  children, 
-  bgColor, 
-  hoverColor 
-}: { 
-  href: string; 
-  children: React.ReactNode; 
-  bgColor: string;
-  hoverColor: string;
-}) {
-  return (
-    <Link 
-      href={href} 
-      className={`w-12 h-12 flex items-center justify-center rounded-full ${bgColor} ${hoverColor} text-white transition duration-200`}
-    >
-      {children}
-    </Link>
-  );
-}
+// function SocialLink({ 
+//   href, 
+//   children, 
+//   bgColor, 
+//   hoverColor 
+// }: { 
+//   href: string; 
+//   children: React.ReactNode; 
+//   bgColor: string;
+//   hoverColor: string;
+// }) {
+//   return (
+//     <Link 
+//       href={href} 
+//       className={`w-12 h-12 flex items-center justify-center rounded-full ${bgColor} ${hoverColor} text-white transition duration-200`}
+//     >
+//       {children}
+//     </Link>
+//   );
+// }
 
 // Icons
 function LocationIcon() {

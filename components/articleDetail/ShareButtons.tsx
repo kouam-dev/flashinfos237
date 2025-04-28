@@ -28,10 +28,10 @@ export default function ShareButtons({ url, title, summary }: ShareButtonsProps)
     window.open(`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(`${summary || ''}\n\nLire l'article: ${url}`)}`, '_blank');
   };
   
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(url);
-    alert('URL copiée dans le presse-papier!');
-  };
+  // const copyToClipboard = () => {
+  //   navigator.clipboard.writeText(url);
+  //   alert('URL copiée dans le presse-papier!');
+  // };
   
   return (
     <div className="flex flex-wrap gap-3">

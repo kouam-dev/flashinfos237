@@ -8,15 +8,30 @@ import { Comment, CommentStatus } from '@/types/comment';
 /**
  * Convertit les timestamps Firestore en objets Date JavaScript
  */
-function convertFirestoreTimestamps(obj: any) {
+// Define the FirestoreTimestamp interface
+interface FirestoreTimestamp {
+  seconds: number;
+  nanoseconds: number;
+}
+
+// Define a type for objects that might contain Firestore timestamps
+type FirestoreData = {
+  [key: string]: string | number | boolean | null | undefined | FirestoreTimestamp | Date | FirestoreData | Array<any>;
+};
+
+/**
+ * Convertit les timestamps Firestore en objets Date JavaScript
+ */
+function convertFirestoreTimestamps(obj: FirestoreData): FirestoreData {
   const result = { ...obj };
   
   // Convertir les timestamps directs
   Object.keys(result).forEach(key => {
     // Si c'est un timestamp Firestore (a seconds et nanoseconds)
-    if (result[key] && typeof result[key] === 'object' && 'seconds' in result[key] && 'nanoseconds' in result[key]) {
+    if (result[key] && typeof result[key] === 'object' && 
+        'seconds' in result[key] && 'nanoseconds' in result[key]) {
       // Convertir en timestamp JavaScript (millisecondes)
-      result[key] = new Date(result[key].seconds * 1000).toISOString();
+      result[key] = new Date((result[key] as FirestoreTimestamp).seconds * 1000).toISOString();
     }
   });
   

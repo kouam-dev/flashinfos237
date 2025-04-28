@@ -33,7 +33,8 @@ export async function updateViewCount(articleId: string): Promise<void> {
         count: increment(1),
         lastUpdated: serverTimestamp()
       });
-    } catch (error) {
+    } catch (error: unknown) {
+      console.log(error instanceof Error ? error.message : 'Unknown error');
       // Si le document n'existe pas, le créer
       await setDoc(pageViewRef, {
         date: todayTimestamp,
