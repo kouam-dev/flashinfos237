@@ -85,11 +85,11 @@ const FooterClient = ({ categories }: FooterClientProps) => {
                   Conditions d&apos;utilisation
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/advertise" className="text-gray-400 hover:text-white">
                   Publicité
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           
@@ -102,9 +102,14 @@ const FooterClient = ({ categories }: FooterClientProps) => {
                   contact@flashinfos237.com
                 </a>
               </li>
+              {/* <li>
+                <a href="tel:+237650601520" className="hover:text-white">
+                +237 650 601 520
+                </a>
+              </li> */}
               <li>
-                <a href="tel:+237600000000" className="hover:text-white">
-                  +237 600 000 000
+                <a href="tel:+237697965420" className="hover:text-white">
+                +237 697 965 420
                 </a>
               </li>
               <li>Yaoundé, Cameroun</li>

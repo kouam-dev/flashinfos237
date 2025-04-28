@@ -19,7 +19,7 @@ function NewsletterSection() {
       
       // Vérifier si l'email existe déjà
       const q = query(
-        collection(db, 'newsletterSubscriptions'), 
+        collection(db, 'newsletter_subscribers'), 
         where('email', '==', email),
         where('active', '==', true)
       );
