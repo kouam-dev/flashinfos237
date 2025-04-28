@@ -1,5 +1,5 @@
 // lib/api.ts
-import { collection, getDocs, query, where, orderBy, limit, doc, getDoc, DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
+import { collection, getDocs, query, where, orderBy, limit} from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { Category, Article, ArticleStatus } from '@/types';
 import { Comment, CommentStatus } from '@/types/comment';
@@ -20,6 +20,99 @@ function convertFirestoreTimestamps(obj: any) {
   });
   
   return result;
+}
+
+/**
+ * Récupère tous les articles mis en avant
+ */
+export async function getAllFeaturedArticles(featuredArticlesLimit = 5): Promise<Article[]> {
+  try {
+    const featuredQuery = query(
+      collection(db, 'articles'),
+      where('status', '==', ArticleStatus.PUBLISHED),
+      where('featured', '==', true),
+      orderBy('publishedAt', 'desc'),
+      limit(featuredArticlesLimit)
+    );
+    
+    const featuredSnapshot = await getDocs(featuredQuery);
+    
+    if (featuredSnapshot.empty) {
+      return [];
+    }
+    
+    return featuredSnapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        ...convertFirestoreTimestamps(data)
+      } as Article;
+    });
+  } catch (error) {
+    console.error("Error fetching featured articles:", error);
+    return [];
+  }
+}
+
+/**
+ * Récupère les derniers articles publiés
+ */
+export async function getLatestArticles(articlePerPage = 20): Promise<Article[]> {
+  try {
+    const latestQuery = query(
+      collection(db, 'articles'),
+      where('status', '==', ArticleStatus.PUBLISHED),
+      orderBy('publishedAt', 'desc'),
+      limit(articlePerPage)
+    );
+    
+    const latestSnapshot = await getDocs(latestQuery);
+    
+    if (latestSnapshot.empty) {
+      return [];
+    }
+    
+    return latestSnapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        ...convertFirestoreTimestamps(data)
+      } as Article;
+    });
+  } catch (error) {
+    console.error("Error fetching latest articles:", error);
+    return [];
+  }
+}
+
+/**
+ * Récupère toutes les catégories actives
+ */
+export async function getActiveCategories(): Promise<Category[]> {
+  try {
+    const categoriesQuery = query(
+      collection(db, 'categories'),
+      where('active', '==', true),
+      orderBy('order')
+    );
+    
+    const categoriesSnapshot = await getDocs(categoriesQuery);
+    
+    if (categoriesSnapshot.empty) {
+      return [];
+    }
+    
+    return categoriesSnapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        ...convertFirestoreTimestamps(data)
+      } as Category;
+    });
+  } catch (error) {
+    console.error("Error fetching active categories:", error);
+    return [];
+  }
 }
 
 /**
