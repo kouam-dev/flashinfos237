@@ -1,0 +1,14 @@
+# Robots.txt pour votre site web de news
+User-agent: *
+Allow: /
+
+# Exclure les pages d'administration ou en développement
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+
+# Indiquer l'emplacement du sitemap
+Sitemap:http://localhost:3000/sitemap.xml
+
+# Ajouter le feed RSS
+Feed: http://localhost:3000/feed.xml

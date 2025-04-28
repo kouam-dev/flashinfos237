@@ -49,6 +49,17 @@ export async function generateMetadata(
       title: metaTitle,
       description: metaDescription,
       images: [article.imageUrl],
+    },
+    // Ajout de la balise RSS dans les métadonnées
+    alternates: {
+      types: {
+        'application/rss+xml': [
+          {
+            url: '/feed.xml',
+            title: 'RSS Feed pour flashinfos237'
+          }
+        ]
+      }
     }
   };
 }
