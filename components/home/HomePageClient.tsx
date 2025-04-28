@@ -8,7 +8,7 @@ import { collection, getDocs, query, where, orderBy, limit } from 'firebase/fire
 import { db } from '@/lib/firebase';
 import { Article, ArticleStatus, Category } from '@/types';
 import SkeletonLoader from '@/components/ui/SkeletonLoader';
-import NewsletterSection from '@/components/NewsletterSection';
+import NewsletterSection from '@/components/home/NewsletterSection';
 
 export default function HomePageClient({ 
   initialFeaturedArticles, 
@@ -22,7 +22,6 @@ export default function HomePageClient({
   const [featuredArticles, setFeaturedArticles] = useState<Article[]>(initialFeaturedArticles || []);
   const [latestArticles, setLatestArticles] = useState<Article[]>(initialLatestArticles || []);
   const [categories, setCategories] = useState<Category[]>(initialCategories || []);
-  const [topCategories, setTopCategories] = useState<Category[]>(initialCategories?.slice(0, 5) || []);
   const [isLoading, setIsLoading] = useState(!initialFeaturedArticles || !initialLatestArticles);
   
   useEffect(() => {
@@ -49,9 +48,6 @@ export default function HomePageClient({
           ...doc.data()
         })) as Category[];
         setCategories(categoriesData);
-        
-        // Top 5 categories for nav
-        setTopCategories(categoriesData.slice(0, 5));
       }
 
       // Fetch featured articles if not provided

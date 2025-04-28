@@ -4,8 +4,8 @@
 import { useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import CommentSection from '@/components/CommentSection';
-import ShareButtons from '@/components/ShareButtons';
+import CommentSection from '@/components/articleDetail/CommentSection';
+import ShareButtons from '@/components/articleDetail/ShareButtons';
 import { Article, Category } from '@/types';
 import { Comment } from '@/types/comment';
 import ArticleSkeleton from '@/components/ui/ArticleSkeleton';
