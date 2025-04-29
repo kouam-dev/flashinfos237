@@ -1,6 +1,5 @@
 // components/contact/ContactInfo.tsx
 import Image from 'next/image';
-import Link from 'next/link';
 // import { FiFacebook, FiInstagram } from 'react-icons/fi';
 
 export default function ContactInfo() {

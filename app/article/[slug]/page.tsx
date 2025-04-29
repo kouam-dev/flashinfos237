@@ -1,5 +1,5 @@
 // app/article/[slug]/page.tsx
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata } from 'next';
 import { getArticleBySlug, getCommentsByArticleId, getRelatedArticles, getAllCategories } from '@/lib/api';
 import ArticleDetailClient from '@/components/article/ArticleDetailClient';
 import { updateViewCount } from '@/lib/firebase-server';

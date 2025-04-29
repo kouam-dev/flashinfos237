@@ -17,7 +17,7 @@ export default function CategoryPageClient({ initialCategory, initialArticles }:
   const [category, setCategory] = useState<Category | null>(initialCategory);
   const [isLoading, setIsLoading] = useState(!initialCategory);
   const [hasMore, setHasMore] = useState(true);
-  const [lastDoc, setLastDoc] = useState<QueryDocumentSnapshot | any>(null);
+  const [lastDoc, setLastDoc] = useState<QueryDocumentSnapshot | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
   
   const pathname = usePathname();

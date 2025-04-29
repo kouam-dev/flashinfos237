@@ -1,5 +1,5 @@
 // app/category/[slug]/page.tsx
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata} from 'next';
 import { getCategoryBySlug, getArticlesByCategory } from '@/lib/api';
 import CategoryPageClient from '@/components/category/CategoryPageClient';
 import { Article } from '@/types/article';

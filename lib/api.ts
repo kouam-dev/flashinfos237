@@ -16,7 +16,7 @@ interface FirestoreTimestamp {
 
 // Define a type for objects that might contain Firestore timestamps
 type FirestoreData = {
-  [key: string]: string | number | boolean | null | undefined | FirestoreTimestamp | Date | FirestoreData | Array<any>;
+  [key: string]: string | number | boolean | null | undefined | FirestoreTimestamp | Date | FirestoreData | Array<FirestoreData | string | number | boolean | null | undefined | FirestoreTimestamp | Date>;
 };
 
 /**
