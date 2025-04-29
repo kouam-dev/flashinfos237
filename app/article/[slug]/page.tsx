@@ -6,12 +6,14 @@ import { updateViewCount } from '@/lib/firebase-server';
 import { notFound } from 'next/navigation';
 import { Article } from '@/types/article';
 
-type Props = {
-  params: { slug: string }
+// Correction du type avec la définition appropriée pour Next.js
+interface PageProps {
+  params: { slug: string };
+  searchParams: Record<string, string | string[] | undefined>;
 }
 
 export async function generateMetadata(
-  { params }: Props
+  { params }: PageProps
 ): Promise<Metadata> {
   const article = await getArticleBySlug(params.slug);
   
@@ -63,7 +65,8 @@ export async function generateMetadata(
 
 export const revalidate = 300; // 5 minutes
 
-export default async function ArticleDetailPage({ params }: Props) {
+// Utilisation du type PageProps au lieu de Props
+export default async function ArticleDetailPage({ params }: PageProps) {
   const slug = params.slug;
   
   // Récupérer toutes les données nécessaires
