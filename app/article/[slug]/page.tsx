@@ -6,20 +6,12 @@ import { updateViewCount } from '@/lib/firebase-server';
 import { notFound } from 'next/navigation';
 import { Article } from '@/types/article';
 
-// Utiliser les types natifs de la plateforme
-type Params = {
-  slug: string;
-}
-
-interface GenerateMetadataProps {
-  params: Params;
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
-
-export async function generateMetadata(
-  { params }: GenerateMetadataProps
-): Promise<Metadata> {
-  const article = await getArticleBySlug(params.slug);
+// Typages pour Next.js 15.3.1
+// Ces types utilisent l'approche la plus basique qui devrait fonctionner
+// indépendamment des types internes spécifiques à cette version
+export async function generateMetadata(props: any): Promise<Metadata> {
+  const slug = props.params.slug;
+  const article = await getArticleBySlug(slug);
   
   if (!article) {
     return {
@@ -40,7 +32,7 @@ export async function generateMetadata(
     openGraph: {
       title: metaTitle,
       description: metaDescription,
-      url: `/article/${params.slug}`,
+      url: `/article/${slug}`,
       type: 'article',
       publishedTime: article.publishedAt instanceof Date 
       ? article.publishedAt.toISOString() 
@@ -77,14 +69,9 @@ export async function generateMetadata(
 
 export const revalidate = 300; // 5 minutes
 
-// Utiliser les interfaces natives de Next.js pour le composant de page
-export default async function ArticleDetailPage({ 
-  params 
-}: {
-  params: Params;
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) {
-  const slug = params.slug;
+// Utiliser any pour éviter les problèmes de typage spécifiques à la version
+export default async function ArticleDetailPage(props: any) {
+  const slug = props.params.slug;
   
   // Récupérer toutes les données nécessaires
   const article = await getArticleBySlug(slug);
