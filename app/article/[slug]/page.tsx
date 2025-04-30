@@ -42,8 +42,8 @@ export async function generateMetadata(
       description: metaDescription,
       url: `/article/${params.slug}`,
       type: 'article',
-      publishedTime: article.publishedAt as unknown as string,
-      modifiedTime: article.updatedAt as unknown as string,
+      publishedTime: article.publishedAt instanceof Date ? article.publishedAt.toISOString() : String(article.publishedAt),
+      modifiedTime: article.updatedAt instanceof Date ? article.updatedAt.toISOString() : String(article.updatedAt),
       authors: [article.authorName],
       images: [{ url: article.imageUrl }]
     },
