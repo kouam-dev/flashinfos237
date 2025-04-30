@@ -141,7 +141,7 @@ export default function HomePageClient({
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                   <div className="absolute bottom-0 left-0 p-6 text-white">
-                    <h2 className="text-3xl font-bold mb-2 group-hover:text-red-400 transition-colors">
+                    <h2 className="text-3xl font-bold mb-2 line-clamp-5 group-hover:text-red-400 transition-colors">
                       {mainFeatured.title}
                     </h2>
                     <p className="mb-2 line-clamp-2">{mainFeatured.summary}</p>
@@ -301,7 +301,7 @@ export default function HomePageClient({
                         {index + 1}
                       </span>
                       <div>
-                        <h4 className="font-bold group-hover:text-red-600 transition-colors">
+                        <h4 className="text-gray-700 font-bold group-hover:text-red-600 transition-colors">
                           {article.title}
                         </h4>
                         <p className="text-sm text-gray-500">
@@ -316,7 +316,7 @@ export default function HomePageClient({
 
           {/* Tag cloud */}
           <div className="bg-gray-50 p-6 rounded-md mb-8">
-            <h3 className="text-xl font-bold mb-4 pb-2 border-b border-gray-300">
+            <h3 className="text-xl text-gray-700  font-bold mb-4 pb-2 border-b border-gray-300">
               Tags populaires
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -326,7 +326,7 @@ export default function HomePageClient({
                   <Link 
                     key={tag} 
                     href={`/tag/${tag}`}
-                    className="bg-gray-200 hover:bg-red-600 hover:text-white px-3 py-1 rounded-full text-sm transition-colors"
+                    className="bg-gray-200 text-gray-600  hover:bg-red-600 hover:text-white px-3 py-1 rounded-full text-sm transition-colors"
                   >
                     {tag}
                   </Link>

@@ -61,7 +61,7 @@ function NewsletterSection() {
             <input
               type="email"
               placeholder="Votre adresse e-mail"
-              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none"
+              className="w-full px-4 py-2 text-gray-600 rounded-md border border-gray-300 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required

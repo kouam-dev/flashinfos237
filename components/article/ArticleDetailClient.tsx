@@ -71,7 +71,7 @@ export default function ArticleDetailClient({
               </Link>
             )}
             
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">{article.title}</h1>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bolD mb-4">{article.title}</h1>
             
             <div className="flex items-center justify-between border-b border-t border-gray-200 py-4">
               <div className="flex items-center">
