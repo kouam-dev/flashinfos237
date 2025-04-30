@@ -7,10 +7,16 @@ import { updateViewCount } from '@/lib/firebase-server';
 import { notFound } from 'next/navigation';
 import { Article } from '@/types/article';
 
-// Cette approche utilise le type 'any' mais avec une désactivation explicite de la règle ESLint
-export async function generateMetadata(props: any): Promise<Metadata> {
-  const slug = props.params.slug;
-  const article = await getArticleBySlug(slug);
+type Props = {
+  params: { slug: string }
+}
+
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
+  // Attendre l'objet params complet
+  const resolvedParams = await Promise.resolve(params);
+  const article = await getArticleBySlug(resolvedParams.slug);
   
   if (!article) {
     return {
@@ -31,10 +37,10 @@ export async function generateMetadata(props: any): Promise<Metadata> {
     openGraph: {
       title: metaTitle,
       description: metaDescription,
-      url: `/article/${slug}`,
+      url: `/article/${resolvedParams.slug}`,
       type: 'article',
-      publishedTime: article.publishedAt instanceof Date ? article.publishedAt.toISOString() : typeof article.publishedAt == "string" ? article.publishedAt : undefined,
-      modifiedTime: article.updatedAt instanceof Date ? article.updatedAt.toISOString() : typeof article.updatedAt == "string" ? article.updatedAt : undefined,
+      publishedTime: article.publishedAt as unknown as string,
+      modifiedTime: article.updatedAt as unknown as string,
       authors: [article.authorName],
       images: [{ url: article.imageUrl }]
     },
@@ -60,8 +66,9 @@ export async function generateMetadata(props: any): Promise<Metadata> {
 
 export const revalidate = 300; // 5 minutes
 
-export default async function ArticleDetailPage(props: any) {
-  const slug = props.params.slug;
+export default async function ArticleDetailPage({ params }: Props) {
+  const resolvedParams = await Promise.resolve(params);
+  const slug = resolvedParams.slug;
   
   // Récupérer toutes les données nécessaires
   const article = await getArticleBySlug(slug);
@@ -76,7 +83,7 @@ export default async function ArticleDetailPage(props: any) {
   // Récupérer les commentaires et les articles associés
   const comments = await getCommentsByArticleId(article.id);
   
-  let relatedArticles: Article[] = [];
+  let relatedArticles : Article[] = [];
   if (article.categoryIds && article.categoryIds.length > 0) {
     relatedArticles = await getRelatedArticles(article.id, article.categoryIds[0]);
   }

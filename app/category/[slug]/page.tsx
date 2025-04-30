@@ -1,4 +1,5 @@
 // app/category/[slug]/page.tsx
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Metadata} from 'next';
 import { getCategoryBySlug, getArticlesByCategory } from '@/lib/api';
 import CategoryPageClient from '@/components/category/CategoryPageClient';
