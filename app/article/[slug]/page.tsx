@@ -6,14 +6,18 @@ import { updateViewCount } from '@/lib/firebase-server';
 import { notFound } from 'next/navigation';
 import { Article } from '@/types/article';
 
-// Utilisons les types corrects du App Router de Next.js
-type PageProps = {
-  params: { slug: string };
+// Utiliser les types natifs de la plateforme
+type Params = {
+  slug: string;
+}
+
+interface GenerateMetadataProps {
+  params: Params;
   searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 export async function generateMetadata(
-  { params }: PageProps
+  { params }: GenerateMetadataProps
 ): Promise<Metadata> {
   const article = await getArticleBySlug(params.slug);
   
@@ -39,15 +43,15 @@ export async function generateMetadata(
       url: `/article/${params.slug}`,
       type: 'article',
       publishedTime: article.publishedAt instanceof Date 
-        ? article.publishedAt.toISOString() 
-        : typeof article.publishedAt === 'string' 
-        ? article.publishedAt 
-        : undefined,
+      ? article.publishedAt.toISOString() 
+      : typeof article.publishedAt === 'string' 
+      ? article.publishedAt 
+      : undefined,
       modifiedTime: article.updatedAt instanceof Date 
-        ? article.updatedAt.toISOString() 
-        : typeof article.updatedAt === 'string' 
-        ? article.updatedAt 
-        : undefined,
+      ? article.updatedAt.toISOString() 
+      : typeof article.updatedAt === 'string' 
+      ? article.updatedAt 
+      : undefined,
       authors: [article.authorName],
       images: [{ url: article.imageUrl }]
     },
@@ -73,7 +77,13 @@ export async function generateMetadata(
 
 export const revalidate = 300; // 5 minutes
 
-export default async function ArticleDetailPage({ params }: PageProps) {
+// Utiliser les interfaces natives de Next.js pour le composant de page
+export default async function ArticleDetailPage({ 
+  params 
+}: {
+  params: Params;
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
   const slug = params.slug;
   
   // Récupérer toutes les données nécessaires
@@ -105,3 +115,4 @@ export default async function ArticleDetailPage({ params }: PageProps) {
     initialCategories={JSON.parse(JSON.stringify(categories))}
   />;
 }
+
