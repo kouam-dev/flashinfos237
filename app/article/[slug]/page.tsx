@@ -6,10 +6,20 @@ import { updateViewCount } from '@/lib/firebase-server';
 import { notFound } from 'next/navigation';
 import { Article } from '@/types/article';
 
-// Typages pour Next.js 15.3.1
-// Ces types utilisent l'approche la plus basique qui devrait fonctionner
-// indépendamment des types internes spécifiques à cette version
-export async function generateMetadata(props: any): Promise<Metadata> {
+// Définir un type qui satisfait la contrainte en incluant les propriétés de Promise
+// mais qui contient aussi notre structure attendue
+interface ParamsWithPromise extends Promise<{ slug: string }> {
+  slug: string;
+}
+
+interface NextPageProps {
+  params: ParamsWithPromise;
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export async function generateMetadata(
+  props: NextPageProps
+): Promise<Metadata> {
   const slug = props.params.slug;
   const article = await getArticleBySlug(slug);
   
@@ -69,8 +79,7 @@ export async function generateMetadata(props: any): Promise<Metadata> {
 
 export const revalidate = 300; // 5 minutes
 
-// Utiliser any pour éviter les problèmes de typage spécifiques à la version
-export default async function ArticleDetailPage(props: any) {
+export default async function ArticleDetailPage(props: NextPageProps) {
   const slug = props.params.slug;
   
   // Récupérer toutes les données nécessaires
