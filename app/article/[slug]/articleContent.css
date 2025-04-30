@@ -37,7 +37,7 @@
 .article-content h2 {
   font-size: 1.875rem;
   font-weight: 700;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   margin-bottom: 1rem;
   color: var(--heading-color);
   border-bottom: 2px solid var(--border-color);

@@ -84,11 +84,49 @@ export default function ArticleDetailClient({
                 </div>
               </div>
               
-              <div className="flex items-center space-x-2">
-                <span className="text-sm text-gray-500">{article.viewCount} lecture{article.viewCount !== 1 ? 's' : ''}</span>
-                <span className="text-gray-300">|</span>
-                <span className="text-sm text-gray-500">{article.commentCount} commentaire{article.commentCount !== 1 ? 's' : ''}</span>
+              <div className="flex items-center space-x-4">
+              {/* Bloc de vues avec icône d'œil personnalisée */}
+              <div className="flex items-center space-x-1">
+                <svg 
+                  className="w-5 h-5 text-gray-500" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2"
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+                </svg>
+                <span className="text-sm text-gray-500 hidden sm:inline">
+                  {article.viewCount} lecture{article.viewCount !== 1 ? 's' : ''}
+                </span>
+                <span className="text-sm text-gray-500 sm:hidden">{article.viewCount}</span>
               </div>
+              
+              {/* Séparateur */}
+              <span className="text-gray-300 hidden sm:inline">|</span>
+              
+              {/* Bloc de commentaires avec icône de message personnalisée */}
+              <div className="flex items-center space-x-1">
+                <svg 
+                  className="w-5 h-5 text-gray-500" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2"
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                >
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+                <span className="text-sm text-gray-500 hidden sm:inline">
+                  {article.commentCount} commentaire{article.commentCount !== 1 ? 's' : ''}
+                </span>
+                <span className="text-sm text-gray-500 sm:hidden">{article.commentCount}</span>
+              </div>
+            </div>
             </div>
           </div>
           
