@@ -12,19 +12,6 @@
   --border-color: #e5e7eb;
 }
 
-[data-theme="light"]  {
-  --text-color: #333;
-  --heading-color: #111;
-  --link-color: #dc2626;
-  --link-hover-color: #991b1b;
-  --background-color: #ffffff;
-  --code-background: #f3f4f6;
-  --blockquote-background: #f9fafb;
-  --table-even-row: #f9fafb;
-  --table-header: #f3f4f6;
-  --border-color: #e5e7eb;
-}
-
 /* Thème sombre */
 [data-theme="dark"] {
   --text-color: #e5e7eb;
@@ -41,7 +28,6 @@
 
 /* Style de base pour tout le contenu d'article */
 .article-content {
-  color: var(--text-color);
   line-height: 1.8;
   font-size: 1.125rem;
 }
@@ -52,7 +38,6 @@
   font-weight: 700;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
-  color: var(--heading-color);
   border-bottom: 2px solid var(--border-color);
   padding-bottom: 0.5rem;
 }
@@ -62,7 +47,6 @@
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
-  color: var(--heading-color);
 }
 
 .article-content h4 {
@@ -70,13 +54,11 @@
   font-weight: 600;
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
-  color: var(--heading-color);
 }
 
 /* Paragraphes */
 .article-content p {
   margin-bottom: 1.25rem;
-  color: var(--text-color);
 }
 
 /* Liens */
