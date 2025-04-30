@@ -1,14 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Désactive la vérification TypeScript pendant le build
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  // Désactive également ESLint pour être sûr
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // // Désactive la vérification TypeScript pendant le build
+  // typescript: {
+  //   ignoreBuildErrors: true,
+  // },
+  // // Désactive également ESLint pour être sûr
+  // eslint: {
+  //   ignoreDuringBuilds: true,
+  // },
   /* config options here */
   reactStrictMode: true,
   images: {

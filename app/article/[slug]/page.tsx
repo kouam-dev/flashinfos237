@@ -7,16 +7,20 @@ import { updateViewCount } from '@/lib/firebase-server';
 import { notFound } from 'next/navigation';
 import { Article } from '@/types/article';
 
-type Props = {
-  params: { slug: string }
+interface PageParams {
+  slug: string;
+}
+
+interface PageProps {
+  params: PageParams;
+  searchParams: Record<string, string | string[] | undefined>;
 }
 
 export async function generateMetadata(
-  { params }: Props
+  { params }: PageProps
 ): Promise<Metadata> {
-  // Attendre l'objet params complet
-  const resolvedParams = await Promise.resolve(params);
-  const article = await getArticleBySlug(resolvedParams.slug);
+  const slug = params.slug;
+  const article = await getArticleBySlug(slug);
   
   if (!article) {
     return {
@@ -37,7 +41,7 @@ export async function generateMetadata(
     openGraph: {
       title: metaTitle,
       description: metaDescription,
-      url: `/article/${resolvedParams.slug}`,
+      url: `/article/${slug}`,
       type: 'article',
       publishedTime: article.publishedAt as unknown as string,
       modifiedTime: article.updatedAt as unknown as string,
@@ -50,7 +54,6 @@ export async function generateMetadata(
       description: metaDescription,
       images: [article.imageUrl],
     },
-    // Ajout de la balise RSS dans les métadonnées
     alternates: {
       types: {
         'application/rss+xml': [
@@ -66,9 +69,8 @@ export async function generateMetadata(
 
 export const revalidate = 300; // 5 minutes
 
-export default async function ArticleDetailPage({ params }: Props) {
-  const resolvedParams = await Promise.resolve(params);
-  const slug = resolvedParams.slug;
+export default async function ArticleDetailPage({ params, searchParams }: PageProps) {
+  const slug = params.slug;
   
   // Récupérer toutes les données nécessaires
   const article = await getArticleBySlug(slug);
