@@ -6,18 +6,14 @@ import { updateViewCount } from '@/lib/firebase-server';
 import { notFound } from 'next/navigation';
 import { Article } from '@/types/article';
 
-// Utilisons les types officiels de Next.js
-type Params = {
-  slug: string;
-}
-
-type Props = {
-  params: Params;
+// Utilisons les types corrects du App Router de Next.js
+type PageProps = {
+  params: { slug: string };
   searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 export async function generateMetadata(
-  { params }: Props
+  { params }: PageProps
 ): Promise<Metadata> {
   const article = await getArticleBySlug(params.slug);
   
@@ -42,8 +38,16 @@ export async function generateMetadata(
       description: metaDescription,
       url: `/article/${params.slug}`,
       type: 'article',
-      publishedTime: article.publishedAt instanceof Date ? article.publishedAt.toISOString() : String(article.publishedAt),
-      modifiedTime: article.updatedAt instanceof Date ? article.updatedAt.toISOString() : String(article.updatedAt),
+      publishedTime: article.publishedAt instanceof Date 
+        ? article.publishedAt.toISOString() 
+        : typeof article.publishedAt === 'string' 
+        ? article.publishedAt 
+        : undefined,
+      modifiedTime: article.updatedAt instanceof Date 
+        ? article.updatedAt.toISOString() 
+        : typeof article.updatedAt === 'string' 
+        ? article.updatedAt 
+        : undefined,
       authors: [article.authorName],
       images: [{ url: article.imageUrl }]
     },
@@ -69,7 +73,7 @@ export async function generateMetadata(
 
 export const revalidate = 300; // 5 minutes
 
-export default async function ArticleDetailPage({ params }: Props) {
+export default async function ArticleDetailPage({ params }: PageProps) {
   const slug = params.slug;
   
   // Récupérer toutes les données nécessaires
