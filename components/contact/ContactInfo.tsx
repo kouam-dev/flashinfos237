@@ -4,9 +4,9 @@ import Image from 'next/image';
 
 export default function ContactInfo() {
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden">
       <div className="p-5 md:p-6">
-        <h2 className="text-xl md:text-2xl font-bold mb-6 text-gray-800 flex items-center">
+        <h2 className="text-xl md:text-2xl font-bold mb-6 text-gray-800 dark:text-white/50 flex items-center">
           <span className="w-8 h-1 bg-green-700 mr-2"></span>
           Nos coordonnées
         </h2>

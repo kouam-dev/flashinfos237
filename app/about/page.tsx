@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="bg-gray-50 mt-14 md:mt-28">
+    <main className="bg-gray-50 mt-14 md:mt-28 dark:bg-gray-950 dark:text-white">
       {/* En-tête de la page avec fond amélioré */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-green-700 via-red-600 to-amber-500 opacity-90"></div>

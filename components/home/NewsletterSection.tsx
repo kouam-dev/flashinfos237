@@ -50,18 +50,18 @@ function NewsletterSection() {
   };
 
   return (
-    <div className="bg-gray-50 p-6 rounded-md shadow-md">
+    <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-md shadow-md">
       {!subscribed ? (
         <>
           <h3 className="text-xl font-bold mb-2 text-red-600">Abonnez-vous</h3>
-          <p className="mb-4 text-gray-600">
+          <p className="mb-4 text-gray-600 dark:text-white">
             Recevez les dernières actualités directement dans votre boîte mail
           </p>
           <form className="space-y-3" onSubmit={handleSubmit}>
             <input
               type="email"
               placeholder="Votre adresse e-mail"
-              className="w-full px-4 py-2 text-gray-600 rounded-md border border-gray-300 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none"
+              className="w-full px-4 py-2 text-gray-600 dark:text-gray-300 rounded-md border border-gray-300 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -88,8 +88,8 @@ function NewsletterSection() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-xl font-bold mb-2 text-gray-800">Merci pour votre inscription!</h3>
-          <p className="text-gray-600">
+          <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-green-400">Merci pour votre inscription!</h3>
+          <p className="text-gray-600 dark:text-white ">
             Vous recevrez nos dernières actualités directement dans votre boîte mail.
           </p>
         </div>

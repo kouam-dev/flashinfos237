@@ -56,7 +56,7 @@ export default function ArticleDetailClient({
   }
   
   return (
-    <div className="max-w-7xl mx-auto mt-14 md:mt-28 px-4 py-8">
+    <div className="max-w-7xl dark:bg-gray-950  mx-auto mt-14 md:mt-28 px-4 py-8">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Main Content */}
         <div className="flex-1">
@@ -110,7 +110,7 @@ export default function ArticleDetailClient({
           
           {/* Article Content */}
           <div 
-            className="prose prose-lg max-w-none mb-10 article-content"
+            className="dark:text-white prose prose-lg max-w-none mb-10 article-content"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
           

@@ -5,8 +5,8 @@ export default function PrivacyPolicy() {
   return (
     <>
       <main className="container mx-auto mt-14 md:mt-28 px-4 py-8 min-h-screen">
-        <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6 sm:p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-6 flex items-center">
+        <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 shadow-md rounded-lg p-6 sm:p-8">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-800 mb-6 flex items-center">
             <span className="w-10 h-1 bg-green-500 mr-3"></span>
             Politique de Confidentialité
           </h1>
@@ -16,14 +16,14 @@ export default function PrivacyPolicy() {
               Dernière mise à jour : {new Date().toLocaleDateString('fr-FR')}
             </p>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">1. Introduction</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">1. Introduction</h2>
             <p className="mb-4">
               Chez FlashInfos237, nous accordons une grande importance à la protection de vos données personnelles. 
               Cette politique de confidentialité vise à vous informer sur la manière dont nous collectons, utilisons et 
               protégeons vos informations lorsque vous visitez notre site web et utilisez nos services.
             </p>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">2. Informations que nous collectons</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">2. Informations que nous collectons</h2>
             <p className="mb-2">Nous pouvons collecter différents types d&apos;informations, notamment :</p>
             <ul className="list-disc pl-6 mb-4">
               <li className="mb-2">
@@ -40,7 +40,7 @@ export default function PrivacyPolicy() {
               </li>
             </ul>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">3. Utilisation de vos informations</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">3. Utilisation de vos informations</h2>
             <p className="mb-2">Nous utilisons vos informations pour :</p>
             <ul className="list-disc pl-6 mb-4">
               <li className="mb-2">Vous fournir les actualités et informations que vous demandez</li>
@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
               <li className="mb-2">Analyser l&apos;utilisation de notre site et améliorer nos contenus</li>
             </ul>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">4. Partage de vos informations</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">4. Partage de vos informations</h2>
             <p className="mb-4">
               Nous ne vendons pas vos informations personnelles à des tiers. Nous pouvons partager vos informations avec :
             </p>
@@ -61,7 +61,7 @@ export default function PrivacyPolicy() {
               <li className="mb-2">Des tiers avec votre consentement explicite</li>
             </ul>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">5. Sécurité des données</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">5. Sécurité des données</h2>
             <p className="mb-4">
               Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos informations personnelles 
               contre tout accès, modification, divulgation ou destruction non autorisé. Cependant, aucune méthode de 
@@ -69,7 +69,7 @@ export default function PrivacyPolicy() {
               pouvons garantir une sécurité absolue.
             </p>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">6. Vos droits</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">6. Vos droits</h2>
             <p className="mb-2">Vous disposez des droits suivants concernant vos données personnelles :</p>
             <ul className="list-disc pl-6 mb-4">
               <li className="mb-2">Droit d&apos;accès à vos données personnelles</li>
@@ -83,7 +83,7 @@ export default function PrivacyPolicy() {
               Pour exercer ces droits, veuillez nous contacter à l&apos;adresse e-mail indiquée dans la section &quot;Contact&quot; ci-dessous.
             </p>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">7. Cookies</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">7. Cookies</h2>
             <p className="mb-4">
               Notre site utilise des cookies pour améliorer votre expérience. Vous pouvez configurer votre navigateur 
               pour refuser tous les cookies ou pour être informé lorsqu&apos;un cookie est envoyé. Cependant, certaines 
@@ -97,7 +97,7 @@ export default function PrivacyPolicy() {
               date de &quot;dernière mise à jour&quot; en haut de cette politique.
             </p>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">9. Contact</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">9. Contact</h2>
             <p className="mb-4">
               Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter à :
               <br /><a href="mailto:contact@flashinfos237.com" className="text-green-700 hover:underline">contact@flashinfos237.com</a>

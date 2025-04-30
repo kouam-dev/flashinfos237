@@ -4,8 +4,8 @@ export default function TermsOfService() {
   return (
     <>
       <main className="container mx-auto mt-14 md:mt-28 px-4 py-8 min-h-screen">
-        <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6 sm:p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-6 flex items-center">
+        <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 shadow-md rounded-lg p-6 sm:p-8">
+          <h1 className="text-3xl font-bold text-gray-900  dark:text-white/80 mb-6 flex items-center">
             <span className="w-10 h-1 bg-amber-500 mr-3"></span>
             Conditions d&apos;utilisation
           </h1>
@@ -15,21 +15,21 @@ export default function TermsOfService() {
               Dernière mise à jour : {new Date().toLocaleDateString('fr-FR')}
             </p>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">1. Acceptation des conditions</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">1. Acceptation des conditions</h2>
             <p className="mb-4">
               En accédant et en utilisant le site web FlashInfos237 (ci-après dénommé le &quot;Site&quot;), vous acceptez d&apos;être 
               lié par les présentes Conditions d&apos;utilisation. Si vous n&apos;acceptez pas ces conditions, veuillez ne pas 
               utiliser notre Site.
             </p>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">2. Modification des conditions</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">2. Modification des conditions</h2>
             <p className="mb-4">
               FlashInfos237 se réserve le droit de modifier ces conditions à tout moment. Les modifications entrent en 
               vigueur dès leur publication sur le Site. Votre utilisation continue du Site après la publication des 
               modifications constitue votre acceptation de ces changements.
             </p>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">3. Utilisation du site</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">3. Utilisation du site</h2>
             <p className="mb-4">
               Vous acceptez d&apos;utiliser le Site uniquement à des fins légales et d&apos;une manière qui ne porte pas atteinte 
               aux droits de tiers et qui ne restreint ou n&apos;empêche pas l&apos;utilisation et la jouissance du Site par un tiers.
@@ -45,7 +45,7 @@ export default function TermsOfService() {
               <li className="mb-2">Promouvoir des activités illégales ou utiliser le Site à des fins frauduleuses</li>
             </ul>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">4. Propriété intellectuelle</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">4. Propriété intellectuelle</h2>
             <p className="mb-4">
               Tous les contenus publiés sur FlashInfos237, y compris les textes, graphiques, logos, images, vidéos et 
               autres matériels sont la propriété de FlashInfos237 ou de ses concédants de licence et sont protégés par 
@@ -58,7 +58,7 @@ export default function TermsOfService() {
               Site sans notre autorisation écrite préalable.
             </p>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">5. Commentaires et contributions des utilisateurs</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">5. Commentaires et contributions des utilisateurs</h2>
             <p className="mb-4">
               Si notre Site permet aux utilisateurs de publier des commentaires ou de soumettre du contenu, vous conservez 
               vos droits sur ce contenu, mais vous nous accordez une licence mondiale, non exclusive, gratuite, 
@@ -71,14 +71,14 @@ export default function TermsOfService() {
               ces conditions ou que nous jugeons répréhensible.
             </p>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">6. Liens vers d&apos;autres sites</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">6. Liens vers d&apos;autres sites</h2>
             <p className="mb-4">
               Notre Site peut contenir des liens vers des sites web tiers. Ces liens sont fournis uniquement pour votre 
               commodité. FlashInfos237 n&apos;a aucun contrôle sur le contenu de ces sites et n&apos;assume aucune responsabilité 
               pour le contenu, les pratiques de confidentialité ou les pratiques de ces sites tiers.
             </p>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">7. Limitation de responsabilité</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">7. Limitation de responsabilité</h2>
             <p className="mb-4">
               FlashInfos237 s&apos;efforce de fournir des informations précises et à jour sur son Site, mais ne garantit pas 
               l&apos;exactitude, l&apos;exhaustivité ou la pertinence de ces informations. L&apos;utilisation des informations 
@@ -90,7 +90,7 @@ export default function TermsOfService() {
               utilisation ou de votre incapacité à accéder ou à utiliser le Site.
             </p>
             
-            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800">8. Indemnisation</h2>
+            <h2 className="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-white/80">8. Indemnisation</h2>
             <p className="mb-4">
               Vous acceptez d&apos;indemniser et de dégager de toute responsabilité FlashInfos237, ses dirigeants, employés, 
               agents et fournisseurs de services contre toutes réclamations, responsabilités, dommages, pertes et 

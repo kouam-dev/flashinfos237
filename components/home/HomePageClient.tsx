@@ -117,7 +117,7 @@ export default function HomePageClient({
   }
 
   return (
-    <main className="max-w-7xl mx-auto mt-14 md:mt-28 px-4 py-6">
+    <main className="max-w-7xl dark:bg-gray-950 mx-auto mt-14 md:mt-28 px-4 py-6">
       {/* Welcome message */}
       <div className="bg-red-600 text-white p-3 mb-6 rounded">
         <div className="font-bold text-lg">Bienvenue sur Flashinfos237</div>
@@ -185,7 +185,7 @@ export default function HomePageClient({
       )}
 
       {/* News by Category */}
-      <div className="grid md:grid-cols-12 gap-8">
+      <div className="  grid md:grid-cols-12 gap-8">
         {/* Main content */}
         <div className="md:col-span-8">
           <section>
@@ -286,7 +286,7 @@ export default function HomePageClient({
         {/* Sidebar */}
         <div className="md:col-span-4">
           {/* Most viewed */}
-          <div className="bg-gray-50 p-6 rounded-md mb-8">
+          <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-md mb-8">
             <h3 className="text-xl font-bold mb-4 pb-2 border-b border-gray-300">
               Les plus vus
             </h3>
@@ -301,7 +301,7 @@ export default function HomePageClient({
                         {index + 1}
                       </span>
                       <div>
-                        <h4 className="text-gray-700 font-bold group-hover:text-red-600 transition-colors">
+                        <h4 className="text-gray-700 dark:text-gray-300 font-bold group-hover:text-red-600 transition-colors">
                           {article.title}
                         </h4>
                         <p className="text-sm text-gray-500">
@@ -315,8 +315,8 @@ export default function HomePageClient({
           </div>
 
           {/* Tag cloud */}
-          <div className="bg-gray-50 p-6 rounded-md mb-8">
-            <h3 className="text-xl text-gray-700  font-bold mb-4 pb-2 border-b border-gray-300">
+          <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-md mb-8">
+            <h3 className="text-xl text-gray-700 dark:text-gray-300 font-bold mb-4 pb-2 border-b border-gray-300">
               Tags populaires
             </h3>
             <div className="flex flex-wrap gap-2">

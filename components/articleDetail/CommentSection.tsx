@@ -82,7 +82,7 @@ export default function CommentSection({ articleId, comments }: CommentSectionPr
                 <div className="font-medium">{comment.userName}</div>
                 <div className="text-sm text-gray-500">{formatDate(comment.createdAt)}</div>
               </div>
-              <p className="text-gray-700">{comment.content}</p>
+              <p className="">{comment.content}</p>
               
               {/* Like button */}
               <div className="mt-3 flex items-center">
@@ -105,13 +105,13 @@ export default function CommentSection({ articleId, comments }: CommentSectionPr
           ))}
         </div>
       ) : (
-        <div className="text-center py-8 bg-gray-50 rounded-lg mb-8">
-          <p className="text-gray-600">Soyez le premier à commenter cet article.</p>
+        <div className="text-center py-8 bg-gray-50 dark:bg-gray-900 rounded-lg mb-8">
+          <p className="text-gray-600 dark:text-gray-400">Soyez le premier à commenter cet article.</p>
         </div>
       )}
       
       {/* Comment Form */}
-      <div className="bg-gray-50 p-6 rounded-lg">
+      <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg">
         <h4 className="text-xl font-bold mb-4">Laisser un commentaire</h4>
         
         {successMessage && (
@@ -129,7 +129,7 @@ export default function CommentSection({ articleId, comments }: CommentSectionPr
         <form onSubmit={handleSubmitComment}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
-              <label htmlFor="userName" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="userName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Nom *
               </label>
               <input
@@ -143,7 +143,7 @@ export default function CommentSection({ articleId, comments }: CommentSectionPr
             </div>
             
             <div>
-              <label htmlFor="userEmail" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="userEmail" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Email (facultatif)
               </label>
               <input
@@ -157,7 +157,7 @@ export default function CommentSection({ articleId, comments }: CommentSectionPr
           </div>
           
           <div className="mb-4">
-            <label htmlFor="comment" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="comment" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Commentaire *
             </label>
             <textarea

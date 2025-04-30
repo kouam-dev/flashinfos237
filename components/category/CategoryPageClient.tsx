@@ -151,9 +151,9 @@ export default function CategoryPageClient({ initialCategory, initialArticles }:
   
   if (!category && !isLoading) {
     return (
-      <div className="max-w-7xl mx-auto mt-14 md:mt-28 px-4 py-12">
+      <div className="max-w-7xl dark:bg-gray-950 mx-auto mt-14 md:mt-28 px-4 py-12">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900">Catégorie non trouvée</h1>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Catégorie non trouvée</h1>
           <p className="mt-4 text-gray-600">La catégorie que vous recherchez n&apos;existe pas.</p>
           <Link href="/" className="mt-6 inline-block bg-red-600 text-white px-6 py-3 rounded-md hover:bg-red-700">
             Retour à l&apos;accueil
@@ -164,7 +164,7 @@ export default function CategoryPageClient({ initialCategory, initialArticles }:
   }
   
   return (
-    <div className="max-w-7xl mx-auto mt-14 md:mt-28 px-4 py-8">
+    <div className="max-w-7xl dark:bg-gray-950 mx-auto mt-14 md:mt-28 px-4 py-8">
       {/* Category Header - Improved Style */}
       {category && (
         <div className="mb-10">

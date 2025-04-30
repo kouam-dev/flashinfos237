@@ -14,7 +14,7 @@ export default function ContactPage() {
   }>({});
 
   return (
-    <main className="bg-gray-50 mt-14 md:mt-28">
+    <main className="bg-gray-50 dark:bg-gray-950 mt-14 md:mt-28">
       <ContactHeader />
       
       <div className="container mx-auto px-4 py-8 md:py-12">
