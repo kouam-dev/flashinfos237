@@ -1,4 +1,17 @@
 /* Variables pour les thèmes */
+:root {
+  --text-color: #333;
+  --heading-color: #111;
+  --link-color: #dc2626;
+  --link-hover-color: #991b1b;
+  --background-color: #ffffff;
+  --code-background: #f3f4f6;
+  --blockquote-background: #f9fafb;
+  --table-even-row: #f9fafb;
+  --table-header: #f3f4f6;
+  --border-color: #e5e7eb;
+}
+
 [data-theme="light"]  {
   --text-color: #333;
   --heading-color: #111;
