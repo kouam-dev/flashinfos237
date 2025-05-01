@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: '%s | flashinfos237',
   },
   description: 'Découvrez les dernières actualités et informations sur flashinfos237',
-  keywords: ['actualités', 'news', 'articles', 'information', 'média'],
+  keywords: ["flash infos", "flash infos 237","Paul Biya", "cameroun news","Actualités Cameroun", "Élections Cameroun 2025", "Politique Cameroun", "Flashinfos237", "Flashinfos237.com", "Flashinfos237 Actualités", "Flashinfos237 News", "Présidentielle 2025", "Maurice Kamto", "Société civile camerounaise", "Jeunesse camerounaise"],
   authors: [
     { name: 'Kouam parfait ', url: 'https://flashinfos237.com' },
   ],
