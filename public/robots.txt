@@ -8,7 +8,7 @@ Disallow: /api/
 Disallow: /_next/
 
 # Indiquer l'emplacement du sitemap
-Sitemap:https://flashinfos237test.netlify.app/sitemap.xml
+Sitemap:https://flashinfos237.com/sitemap.xml
 
 # Ajouter le feed RSS
-Feed: https://flashinfos237test.netlify.app/feed.xml
+Feed: https://flashinfos237.com/feed.xml
