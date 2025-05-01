@@ -56,7 +56,8 @@ export default function HeaderClient({ categories }: HeaderClientProps) {
               </li>
             ))}
             <li>
-              <Popover className="relative">
+              {
+                categories.length>6 && <Popover className="relative">
                 <Popover.Button className="text-gray-900  dark:text-white hover:text-red-500 font-medium flex items-center">
                   Plus
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 ml-1">
@@ -78,6 +79,8 @@ export default function HeaderClient({ categories }: HeaderClientProps) {
                   </div>
                 </Popover.Panel>
               </Popover>
+              }
+              
             </li>
           </ul>
         </nav>

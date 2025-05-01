@@ -111,6 +111,9 @@ export default function HomePageClient({
 
   const mainFeatured = featuredArticles[0];
   const secondaryFeatured = featuredArticles.slice(1, 5);
+  
+  // S'assurer que seules les catégories actives sont utilisées pour l'affichage
+  const activeCategories = categories.filter(category => category.active);
 
   if (isLoading) {
     return <SkeletonLoader />;
@@ -185,7 +188,7 @@ export default function HomePageClient({
       )}
 
       {/* News by Category */}
-      <div className="  grid md:grid-cols-12 gap-8">
+      <div className="grid md:grid-cols-12 gap-8">
         {/* Main content */}
         <div className="md:col-span-8">
           <section>
@@ -235,8 +238,9 @@ export default function HomePageClient({
             </div>
           </section>
 
-          {/* Category sections */}
-          {categories.slice(0, 6).map((category) => (
+          {/* Category sections - Afficher uniquement les catégories actives */}
+          {activeCategories.slice(0, 6).map((category) => (
+            
             <section key={category.id} className="mb-12">
               <div className="flex items-center justify-between mb-6 pb-2 border-b-2 border-red-600">
                 <h2 className="text-2xl font-bold">{category.name}</h2>
@@ -323,13 +327,13 @@ export default function HomePageClient({
               {Array.from(new Set(latestArticles.flatMap(article => article.tags || [])))
                 .slice(0, 15)
                 .map((tag) => (
-                  <Link 
+                  <span 
                     key={tag} 
-                    href={`/tag/${tag}`}
+                    // href={`/tag/${tag}`}
                     className="bg-gray-200 text-gray-600  hover:bg-red-600 hover:text-white px-3 py-1 rounded-full text-sm transition-colors"
                   >
                     {tag}
-                  </Link>
+                  </span>
                 ))}
             </div>
           </div>

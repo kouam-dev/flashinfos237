@@ -164,7 +164,7 @@ export default function ArticleDetailClient({
           )}
           
           {/* Sources */}
-          {article.sources && article.sources.length > 0 && (
+          {/* {article.sources && article.sources.length > 0 && (
             <div className="border-t border-gray-200 pt-6 mb-8">
               <h3 className="text-xl font-bold mb-4">Sources</h3>
               <ul className="list-disc pl-5">
@@ -182,7 +182,7 @@ export default function ArticleDetailClient({
                 ))}
               </ul>
             </div>
-          )}
+          )} */}
           
           {/* Share Buttons */}
           <div className="border-t border-b border-gray-200 py-6 mb-8">
