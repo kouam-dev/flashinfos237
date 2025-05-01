@@ -30,10 +30,12 @@ export async function generateMetadata(
   }
   const metaTitle = article.title;
   const metaDescription = article.summary;
+  const metaKeywords = article.keywords?.length ? article.keywords : article.tags;
   
   return {
     title: metaTitle,
     description: metaDescription,
+    keywords: metaKeywords.join(', '),
     openGraph: {
       title: metaTitle,
       description: metaDescription,

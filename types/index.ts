@@ -14,6 +14,7 @@ export interface Article {
     authorName: string;
     categoryIds: string[];
     tags: string[];
+    keywords: string[];
     status: ArticleStatus;
     featured: boolean;
     viewCount: number;
@@ -38,6 +39,7 @@ export interface Article {
     id?: string;
     categoryIds: string[];
     tags: string[];
+    keywords: string[];
   }
   
   export interface Category {
