@@ -130,7 +130,7 @@ export default function AboutPage() {
         </section>
 
         {/* Notre équipe */}
-        <section className="mb-16 md:mb-24">
+        {/* <section className="mb-16 md:mb-24">
           <h2 className="text-2xl md:text-3xl font-bold mb-8 flex items-center">
             <span className="w-12 h-2 bg-amber-500 mr-3 rounded-full"></span>
             Notre Équipe
@@ -173,7 +173,7 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Section Contact */}
         <section>
