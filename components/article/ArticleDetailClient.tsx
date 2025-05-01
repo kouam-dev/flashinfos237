@@ -196,7 +196,8 @@ export default function ArticleDetailClient({
           
           {/* Comments Section */}
           <div className="mb-8">
-            <h3 className="text-2xl font-bold mb-6">Commentaires ({article.commentCount})</h3>
+            <h3 className="text-2xl font-bold mb-6">Commentaires </h3>
+            {/* <h3 className="text-2xl font-bold mb-6">Commentaires ({article.commentCount})</h3> */}
             <CommentSection 
               articleId={article.id}
               comments={comments}
@@ -209,7 +210,7 @@ export default function ArticleDetailClient({
         <div className="lg:w-96">
           <div className="sticky top-24">
             {relatedArticles.length > 0 && (
-              <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg">
                 <h3 className="text-xl font-bold mb-4">Articles similaires</h3>
                 <div className="space-y-4">
                   {relatedArticles.map(relatedArticle => (
