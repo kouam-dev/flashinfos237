@@ -118,7 +118,7 @@ const FooterClient = ({ categories }: FooterClientProps) => {
         
         {/* Copyright notice */}
         <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>© {currentYear} Flashinfos237. Tous droits réservés. Developpé par <a href='https://kwamya.flashinfos237.com' target='blank' className='text-gray-700 hover:text-red-500'>KWAMYA</a></p>
+          <p>© {currentYear} Flashinfos237. Tous droits réservés. Developpé par <a href='https://kwamya.flashinfos237.com' target='blank' className='text-gray-200 hover:text-red-500'>KWAMYA</a></p>
         </div>
       </div>
     </footer>
